@@ -4,6 +4,11 @@ concurrency: versioning
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'node/workspaces/**'
 
 jobs:
   create_label:
