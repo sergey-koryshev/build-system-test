@@ -13,13 +13,12 @@ on:
 jobs:
   create_label:
     name: Create Version Label
-    uses: sergey-koryshev/build-system/.github/workflows/create-version-label.yml@create-version-label-v1.4.2
+    uses: sergey-koryshev/build-system/.github/workflows/create-version-label.yml@88d35dd506e4bc7cfa51a59ed04b4b922ff08c5e
     secrets:
       REPO_TOKEN: ${{ secrets.REPO_PAT }}
     with:
-      app-name: test-workspace-1
       project-type: Node
       root-path: node/workspaces
       workspace-name: test-workspace-1
       version-configuration-path: version-configuration.json
-      scripts-ref: create-version-label-v1.4.2
+      scripts-ref: 88d35dd506e4bc7cfa51a59ed04b4b922ff08c5e
