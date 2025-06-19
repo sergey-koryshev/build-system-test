@@ -17,6 +17,9 @@ jobs:
     permissions:
       contents: read
       packages: read
+    defaults:
+      run:
+        working-directory: node/workspaces
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
