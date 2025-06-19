@@ -13,13 +13,18 @@ on:
 jobs:
   create_label:
     name: Create Version Label
-    uses: sergey-koryshev/build-system/.github/workflows/create-version-label.yml@create-version-label-v1.5.0
-    secrets:
-      REPO_TOKEN: ${{ secrets.REPO_PAT }}
-    with:
-      project-type: Node
-      root-path: node/workspaces
-      workspace-name: test-workspace-1
-      version-configuration-path: version-configuration.json
-      override-increment-parts: "Minor,Patch"
-      scripts-ref: create-version-label-v1.5.0
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate action.yml against GitHub Action schema
+        uses: sergey-koryshev/bump-version@dev/add-ci
+        with:
+          project-type: Node
+          workspace-name: test-workspace-1
+          version-configuration-path: version-configuration.json
+          override-increment-parts: "Minor,Patch"
