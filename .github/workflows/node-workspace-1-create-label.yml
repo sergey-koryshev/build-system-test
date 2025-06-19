@@ -24,7 +24,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate action.yml against GitHub Action schema
+      - name: Increment Version
         uses: sergey-koryshev/bump-version@dev/add-ci
         with:
           project-type: Node
