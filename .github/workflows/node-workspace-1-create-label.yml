@@ -21,6 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: NPM authentication
+        run: |
+          npm config set //npm.pkg.github.com/:_authToken "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Increment Version
         uses: sergey-koryshev/bump-version@dev/add-ci
         with:
@@ -29,3 +35,7 @@ jobs:
           workspace-name: test-workspace-1
           version-configuration-path: version-configuration.json
           override-increment-parts: "Minor,Patch"
+
+      - name: Clean up .npmrc
+        if: always()
+        run: npm config delete //npm.pkg.github.com/:_authToken
