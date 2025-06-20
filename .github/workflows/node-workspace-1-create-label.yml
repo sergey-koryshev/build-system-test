@@ -15,7 +15,7 @@ jobs:
     name: Create Version Label
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: read
     steps:
       - name: Checkout repository
