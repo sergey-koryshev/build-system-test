@@ -25,6 +25,7 @@ jobs:
         uses: sergey-koryshev/bump-version@dev/add-ci
         with:
           project-type: Node
+          root-path: node/workspaces
           workspace-name: test-workspace-1
           version-configuration-path: version-configuration.json
           override-increment-parts: "Minor,Patch"
