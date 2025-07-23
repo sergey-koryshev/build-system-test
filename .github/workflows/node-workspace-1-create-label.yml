@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ssh-key: ${{ secrets.BUMP_VERSION }}
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: NPM authentication
         run: |
