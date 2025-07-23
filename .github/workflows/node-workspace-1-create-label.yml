@@ -15,11 +15,12 @@ jobs:
     name: Create Version Label
     runs-on: ubuntu-latest
     permissions:
-      contents: write
       packages: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.BUMP_VERSION }}
 
       - name: NPM authentication
         run: |
@@ -28,7 +29,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Increment Version
-        uses: sergey-koryshev/bump-version@dev/add-ci
+        uses: sergey-koryshev/bump-version@main
         with:
           project-type: Node
           root-path: node/workspaces
